@@ -9,14 +9,14 @@
  * that starts the plugin.
  
  Wanted:
- + designer for icon and header image for the plugin page on wordpress.org
  + developer for features to exclude single posts (checkbox on the post edit page)
  + developer for stylesheet features
  + translators
  *
- * @link              https://stehle-internet.de/
+ * @link              https://www.kybernetik-services.com/
  * @since             1.0.0
  * @package           WP_Sitemaps_Config
+ * @author            Kybernetik Services
  *
  * @wordpress-plugin
  * Plugin Name:       WP Sitemaps Config
@@ -25,8 +25,8 @@
  * Version:           2.0.0
  * Requires at least: 5.5
  * Requires PHP:      5.6
- * Author:            Martin Stehle
- * Author URI:        https://stehle-internet.de/
+ * Author:            Kybernetik Services
+ * Author URI:        https://www.kybernetik-services.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wp-sitemaps-config

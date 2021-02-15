@@ -5,7 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://stehle-internet.de/
+ * @link       https://www.kybernetik-services.com/
  * @since      1.0.0
  *
  * @package    WP_Sitemaps_Config

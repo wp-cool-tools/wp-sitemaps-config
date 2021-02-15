@@ -3,7 +3,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @link       https://stehle-internet.de/
+ * @link       https://www.kybernetik-services.com/
  * @since      1.0.0
  *
  * @package    WP_Sitemaps_Config

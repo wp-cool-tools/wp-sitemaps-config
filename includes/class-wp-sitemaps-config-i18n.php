@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://stehle-internet.de/
+ * @link       https://www.kybernetik-services.com/
  * @since      1.0.0
  *
  * @package    WP_Sitemaps_Config
@@ -22,7 +22,7 @@
  * @since      1.0.0
  * @package    WP_Sitemaps_Config
  * @subpackage WP_Sitemaps_Config/includes
- * @author     Martin Stehle <shop@stehle-internet.de>
+ * @author     Kybernetik Services <wordpress@kybernetik.com.de>
  */
 if ( ! class_exists( 'WP_Sitemaps_Config_i18n' ) ) {
 class WP_Sitemaps_Config_i18n {

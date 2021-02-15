@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://stehle-internet.de/
+ * @link       https://www.kybernetik-services.com/
  * @since      1.0.0
  *
  * @package    WP_Sitemaps_Config
@@ -18,7 +18,7 @@
  *
  * @package    WP_Sitemaps_Config
  * @subpackage WP_Sitemaps_Config/admin
- * @author     Martin Stehle <shop@stehle-internet.de>
+ * @author     Kybernetik Services <wordpress@kybernetik.com.de>
  */
 if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 class WP_Sitemaps_Config_Admin {
