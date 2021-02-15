@@ -1,0 +1,311 @@
+<?php
+
+/**
+ * The public-facing functionality of the plugin.
+ *
+ * @link       https://stehle-internet.de/
+ * @since      1.0.0
+ *
+ * @package    WP_Sitemaps_Config
+ * @subpackage WP_Sitemaps_Config/public
+ */
+
+/**
+ * The public-facing functionality of the plugin.
+ *
+ * Defines the plugin name, version, and two examples hooks for how to
+ * enqueue the public-facing stylesheet and JavaScript.
+ *
+ * @package    WP_Sitemaps_Config
+ * @subpackage WP_Sitemaps_Config/public
+ * @author     Martin Stehle <shop@stehle-internet.de>
+ */
+if ( ! class_exists( 'WP_Sitemaps_Config_Public' ) ) {
+class WP_Sitemaps_Config_Public {
+
+	/**
+	 * The ID of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	private $plugin_name;
+
+	/**
+	 * The slug of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_slug    The slug of this plugin.
+	 */
+	private $plugin_slug;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_version    The current version of this plugin.
+	 */
+	private $plugin_version;
+
+	/**
+	 * Stored settings in an array
+	 *
+	 *
+	 * @since    1.0
+	 *
+	 * @var      array
+	 */
+	private $stored_settings;
+
+	/**
+	 * iDs of excluded posts in an array
+	 *
+	 *
+	 * @since    2.0.0
+	 *
+	 * @var      array
+	 */
+	private $excluded_posts;
+
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    1.0.0
+	 * @param      array     $args    Parameters of this plugin
+	 */
+	public function __construct( $args ) {
+
+		$this->plugin_name		= $args['name'];
+		$this->plugin_slug		= $args['slug'];
+		$this->plugin_version	= $args['plugin_version'];
+
+		// get settings
+		$this->stored_settings = $this->get_stored_settings();
+		// get IDs of excluded posts; empty array if no results
+		$this->excluded_posts = $this->get_excluded_post_ids();
+	}
+
+	/**
+	 * Register the stylesheets for the public-facing side of the site.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_styles() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in WP_Sitemaps_Config_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The WP_Sitemaps_Config_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-sitemaps-config-public.css', array(), $this->plugin_version, 'all' );
+
+	}
+
+	/**
+	 * Register the JavaScript for the public-facing side of the site.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_scripts() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in WP_Sitemaps_Config_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The WP_Sitemaps_Config_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-sitemaps-config-public.js', array( 'jquery' ), $this->plugin_version, false );
+
+	}
+	
+	/**
+	 * Get current or default settings
+	 *
+	 * @since    1.0.0
+	 */
+	public function get_stored_settings() {
+		// try to load current settings. If they are not in the DB return default settings
+		$settings = get_option( WP_SITEMAPS_CONFIG_OPTION_NAME );
+		// if proper settings, then return them
+		if ( is_array( $settings ) and ! empty( $settings ) ) {
+			return $settings;
+		}
+		
+		// else return empty array
+		return array();
+	}
+	
+	/**
+	 * 	Add or remove sitemaps at all
+	 *
+	 * @since    1.0.0
+	 * @return  bool              Whether the sitemaps availability is allowed
+	 */
+	public function is_sitemaps_enabled () {
+		if ( isset( $this->stored_settings[ 'remove_all_sitemaps' ] ) &&  '1' === $this->stored_settings[ 'remove_all_sitemaps' ] ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Add or remove sitemap providers
+	 *
+	 * @since    1.0.0
+	 * @param   object   $provider Instance of a WP_Sitemaps_Provider
+	 * @param   string   $name     Name of the sitemap provider.
+	 * @return  bool/object        Provider instance or false
+	 */
+	public function change_sitemaps_provider ( $provider, $name ) {
+		if ( isset( $this->stored_settings[ 'remove_provider_' . $name ] ) && '1' === $this->stored_settings[ 'remove_provider_' . $name ] ) {
+			return false;
+		}
+		return $provider;
+	}
+	
+	/**
+	 * Add or remove sitemaps for certain post types
+	 *
+	 * @since    1.0.0
+	 * @param   WP_Post_Type[] $post_types Array of registered post type objects keyed by their name.
+	 * @return  WP_Post_Type[]             Edited list of post types
+	 */
+	public function change_sitemaps_post_types ( $post_types ) {
+		foreach ( $post_types as $name => $data ) {
+			if ( isset( $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) && '1' === $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) {
+				unset( $post_types[ $name ] );
+			}
+		}
+		return $post_types;
+	}
+
+	/**
+	 * Add or remove sitemaps for certain taxonomies
+	 *
+	 * @since    1.0.0
+	 * @param   WP_Taxonomy[] $taxonomies Array of registered taxonomy objects keyed by their name.
+	 * @return  WP_Taxonomy[]             Edited list of taxonomies
+	 */
+	public function change_sitemaps_taxonomies ( $taxonomies ) {
+		foreach ( $taxonomies as $name => $data ) {
+			if ( isset( $this->stored_settings[ 'remove_sitemap_taxonomies_' . $name ] ) && '1' === $this->stored_settings[ 'remove_sitemap_taxonomies_' . $name ] ) {
+				unset( $taxonomies[ $name ] );
+			}
+		}
+		return $taxonomies;
+	}
+
+	/**
+	 * Add or remove tags to sitemap providers
+	 *
+	 * @since    1.0.0
+	 * @param array   $sitemap_entry Sitemap entry for the post.
+	 * @param WP_Post $post          Post object.
+	 * @return array                 Edited sitemap entry for the post.
+	 */
+	public function change_sitemaps_posts_entry ( $entry, $post ) {
+		if ( isset( $this->stored_settings[ 'add_lastmod' ] ) && '1' === $this->stored_settings[ 'add_lastmod' ] ) {
+			// date & time o the last modification of the post
+			$entry['lastmod'] = $post->post_modified_gmt;
+		}
+		if ( isset( $this->stored_settings[ 'add_changefreq' ] ) && '1' === $this->stored_settings[ 'add_changefreq' ] ) {
+			// tag for archive
+			$entry['changefreq'] = 'never';
+		}
+		if ( isset( $this->stored_settings[ 'add_priority' ] ) && '1' === $this->stored_settings[ 'add_priority' ] ) {
+			// default value: 0.5
+			$entry['priority'] = 0.5;
+		}
+		return $entry;
+	}
+	
+	/**
+	 * Change posts query arguments
+	 *
+	 * @since    x.x.x
+	 * @param array  $args      Array of WP_Query arguments.
+	 * @param string $post_type Post type name.
+	 * @return array            Edited array of WP_Query arguments.
+	 */
+	public function change_sitemaps_posts_query_args ( $args, $post_type ) {
+		/*// quit unchanged if the post is not of type 'post'?
+		if ( 'post' !== $post_type ) {
+			return $args;
+		}*/
+
+		// if 'post__not_in' parameter is available, then take it, else take an empty array
+		$args['post__not_in'] = isset( $args['post__not_in'] ) ? $args['post__not_in'] : array();
+		// append the post IDs which will be excluded
+		$args['post__not_in'][] = 123;
+		//  edit-post-post-visibility
+		// return the edited args
+		return $args;
+	}
+
+	/** === All functions for the tab 'Posts' === */
+
+	/**
+	 * Remove excluded posts from the sitemap
+	 *
+	 * @since    2.0.0
+	 * @param array  $urls      Array of URL (permalinks)
+	 * @param object $post      WP_Post object
+	 * @return array            Edited array of URL
+	 */
+	public function exclude_single_posts ( $loc, $post ) {
+		
+		// fast check: if no post is excluded, then return unchanged
+		if ( empty( $this->excluded_posts ) ) {
+			return $loc;
+		}
+		
+		// check if the post ID is in the array of excluded posts
+		if ( in_array( $post->ID, $this->excluded_posts ) ) {
+			// return no URL
+			return array( 'loc' => '' );
+		} else {
+			// return unchanged
+			return $loc;
+		}
+
+	}
+	
+	/**
+	 * Retrieve the IDs of excluded posts
+	 *
+	 * @since    2.0.0
+	 * @return   array            Array of post IDs or empty array
+	 */
+	private function get_excluded_post_ids () {
+		global $wpdb;
+		$ids = array();
+		$results = $wpdb->get_results( $wpdb->prepare( "SELECT `post_id`, `meta_value` FROM $wpdb->postmeta WHERE `meta_key` = '%s'", WP_SITEMAPS_CONFIG_META_KEY ) );
+		if ( $results ) {
+			foreach ( $results as $result  ) {
+				$meta_value = maybe_unserialize( $result->meta_value );
+				if ( isset( $meta_value[ 'excluded' ] ) && '1' === $meta_value[ 'excluded' ] ) {
+					$ids[] = absint( $result->post_id );
+				}
+			}
+		}
+		return $ids;
+	}
+
+}
+}

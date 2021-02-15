@@ -1,0 +1,273 @@
+# Copyright (C) 2020
+# This file is distributed under the same license as the plugin package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Sitemaps Config\n"
+"POT-Creation-Date: 2020-10-23 13:35+0200\n"
+"PO-Revision-Date: 2020-10-23 13:36+0200\n"
+"Last-Translator: Martin Stehle <m.stehle@gmx.de>\n"
+"Language-Team: Martin Stehle <m.stehle@gmx.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-wp-sitemaps-config-admin.php:123
+msgid "Exclude this post from the XML sitemap"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:284
+#, php-format
+msgid "Welcome to %1$s! You can find the plugin at %2$s."
+msgstr "Willkommen zu %1$s! Du kannst das Plugin finden unter %2$s."
+
+#: admin/class-wp-sitemaps-config-admin.php:311
+#, php-format
+msgid "Remove sitemap of %s"
+msgstr "Sitemap von %s entfernen"
+
+#: admin/class-wp-sitemaps-config-admin.php:313
+#, php-format
+msgid "Remove all sitemaps of %s"
+msgstr "Alle Sitemaps von %s entfernen"
+
+#: admin/class-wp-sitemaps-config-admin.php:319
+msgid "Remove all sitemaps of posts"
+msgstr "Alle Sitemaps der Beiträge entfernen"
+
+#: admin/class-wp-sitemaps-config-admin.php:320
+msgid "Remove all sitemaps of taxonomies"
+msgstr "Alle Sitemaps der Taxonomien entfernen"
+
+#: admin/class-wp-sitemaps-config-admin.php:321
+msgid "Remove all sitemaps of users"
+msgstr "Alle Sitemaps der Benutzer entfernen"
+
+#: admin/class-wp-sitemaps-config-admin.php:348
+msgid "(if the current theme supports post formats)"
+msgstr "(wenn das aktuelle Theme Beitragsformate unterstützt)"
+
+#: admin/class-wp-sitemaps-config-admin.php:399
+msgid "Configure The WordPress XML Sitemap"
+msgstr "WordPress XML-Sitemaps konfigurieren"
+
+#: admin/class-wp-sitemaps-config-admin.php:400
+msgid ""
+"With the following setting options you control the output of the sitemaps."
+msgstr ""
+"Mit den folgenden Einstellungsmöglichkeiten steuerst du die Ausgabe der "
+"Sitemaps."
+
+#: admin/class-wp-sitemaps-config-admin.php:404
+msgid "Sitemaps in general"
+msgstr "Sitemaps im Allgemeinen"
+
+#: admin/class-wp-sitemaps-config-admin.php:405
+msgid ""
+"Remove all sitemaps completely. If checked, all other options have no "
+"effect. Instead of the sitemaps, the 404 error page is displayed."
+msgstr ""
+"Alle Sitemaps vollständig entfernen. Wenn diese Option aktiviert ist, haben "
+"alle anderen Optionen keine Auswirkungen. Anstelle der Sitemaps wird die 404-"
+"Fehlerseite angezeigt."
+
+#: admin/class-wp-sitemaps-config-admin.php:409
+msgid "Sitemap types"
+msgstr "Sitemap-Typen"
+
+#: admin/class-wp-sitemaps-config-admin.php:410
+msgid ""
+"Select the type of sitemaps you want to remove completely. If checked, the "
+"respective options for the subtypes have no effect."
+msgstr ""
+"Wähle den Typ der Sitemaps aus, die du vollständig entfernen möchtest. Wenn "
+"diese Option aktiviert ist, haben die entsprechenden Optionen für die "
+"Untertypen keine Auswirkungen."
+
+#: admin/class-wp-sitemaps-config-admin.php:415
+msgid "Sitemaps of posts"
+msgstr "Sitemaps der Beiträge"
+
+#: admin/class-wp-sitemaps-config-admin.php:416
+#: admin/class-wp-sitemaps-config-admin.php:422
+msgid "Select the sitemaps you do not want to publish."
+msgstr "Wähle die Sitemaps aus, die Sdunicht veröffentlichen möchtest."
+
+#: admin/class-wp-sitemaps-config-admin.php:421
+msgid "Sitemaps of taxonomies"
+msgstr "Sitemaps der Taxonomien"
+
+#: admin/class-wp-sitemaps-config-admin.php:427
+msgid "Additional tags to sitemap entries"
+msgstr "Zusätzliche Tags zu Sitemap-Einträgen"
+
+#: admin/class-wp-sitemaps-config-admin.php:428
+msgid ""
+"Select the optional tags you want to add in the sitemap entries. These tags "
+"are not typically consumed by search engines. Further tags are not currently "
+"supported by WordPress for the sitemap index."
+msgstr ""
+"Wähle die optionalen Tags aus, die du in den Sitemap-Einträgen hinzufügen "
+"möchtest. Diese Tags werden normalerweise nicht von Suchmaschinen verwendet. "
+"Weitere Tags werden derzeit von WordPress für den Sitemap-Index nicht "
+"unterstützt."
+
+#: admin/class-wp-sitemaps-config-admin.php:430
+msgid "Add priority (default: 0.5)"
+msgstr "Priorität hinzufügen (Standard: 0,5)"
+
+#: admin/class-wp-sitemaps-config-admin.php:431
+msgid "Add change frequency (default: never)"
+msgstr "Änderungshäufigkeit hinzufügen (Standard: nie)"
+
+#: admin/class-wp-sitemaps-config-admin.php:432
+msgid "Add last modification date"
+msgstr "Datum der letzten Änderung hinzufügen"
+
+#: admin/class-wp-sitemaps-config-admin.php:615
+msgid "List of excluded posts"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:626
+msgid ""
+"You see a list of posts excluded from the WordPress XML sitemap, grouped by "
+"post type, sorted alphabetically by post title. Each link points to the edit "
+"page of the post and opens a new tab."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:634
+msgid "Unknown post type"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:659
+#: admin/class-wp-sitemaps-config-admin.php:845
+#: admin/class-wp-sitemaps-config-admin.php:855
+#: admin/class-wp-sitemaps-config-admin.php:891
+#, php-format
+msgid "Excluded: %s"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:685
+msgid "Currently no post is excluded from any XML sitemap."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:688
+msgid "How to exclude posts and pages from the XML sitemap?"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:689
+#, php-format
+msgid ""
+"You can add a post you want to exclude from a WordPress XML sitemap easily. "
+"Go to the edit page of the post, check the checkbox %s and save the post. "
+"That is it."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:695
+msgid "Meta box on a post edit page"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:697
+msgid ""
+"With the meta box on a post edit page you can specify sitemap settings for "
+"each post and page."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:699
+#, php-format
+msgid ""
+"To re-include a post into the XML sitemap, follow the link to´the post edit "
+"page, deactivate the checkbox %s and save the post."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:769
+msgid ""
+"If activated the link to this post is not listed on the XML sitemap. This "
+"does not mean that this post is excluded from search engines crawlers."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:840
+msgid "List of excluded taxonomies"
+msgstr "Liste der ausgeschlossenen Taxonomien"
+
+#: admin/class-wp-sitemaps-config-admin.php:841
+msgid ""
+"You see a list of taxonomies excluded from the WordPress XML sitemap, "
+"grouped by taxonomy type, sorted alphabetically by taxonomy title. Each link "
+"points to the edit page of the taxonomy."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:842
+msgid ""
+"Simply add a taxonomy you want to exclude from a WordPress XML sitemap: Go "
+"to the edit page of the taxonomy, check the Exlude from XML sitemap checkbox "
+"and save the taxonomy."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:886
+msgid "List of excluded users"
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:887
+msgid ""
+"You see a list of users excluded from the WordPress XML sitemap, grouped by "
+"user type, sorted alphabetically by user title. Each link points to the edit "
+"page of the user."
+msgstr ""
+
+#: admin/class-wp-sitemaps-config-admin.php:888
+msgid ""
+"Simply add a user you want to exclude from a WordPress XML sitemap: Go to "
+"the edit page of the user, check the Exlude from XML sitemap checkbox and "
+"save the user."
+msgstr ""
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:34
+msgid "Taxonomies"
+msgstr "Taxonomien"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:51
+msgid "WordPress automatically provides multiple sitemaps for your website."
+msgstr ""
+"WordPress stellt automatisch mehrere Sitemaps für deine Website zur "
+"Verfügung."
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:51
+msgid "View the current XML sitemap index."
+msgstr "Siehe dir den aktuellen XML-Sitemap-Index an."
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:59
+msgid "Share your thoughts!"
+msgstr "Teile deine Gedanken mit!"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:60
+msgid "Do you like the plugin?"
+msgstr "Gefällt dir das Plugin?"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:60
+msgid "Rate it at wordpress.org!"
+msgstr "Bewerte es auf wordpress.org!"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:61
+msgid "Do you need support or have an idea for the plugin?"
+msgstr "Brauchst du Hilfe oder hast du eine Idee für das Plugin?"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:61
+msgid "Post your questions and ideas in the forum at wordpress.org!"
+msgstr "Füge deine Fragen und Ideen zum im Forum auf wordpress.org hinzu!"
+
+#: admin/partials/wp-sitemaps-config-admin-display.php:62
+msgid "A human eye looking at you"
+msgstr ""
+
+#: includes/class-wp-sitemaps-config-activator.php:61
+#, php-format
+msgid "<strong>Error:</strong> The plugin requires the %s PHP extension."
+msgstr "<strong>Fehler:</strong> Das Plugin benötigt die PHP-Erweiterung %s."
