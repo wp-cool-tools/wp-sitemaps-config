@@ -1,9 +1,9 @@
 === WP Sitemaps Config ===
 Contributors: kybernetikservices, Hinjiriyo
-Tags: sitemaps,xml sitemap,configuration
+Tags: wordpress sitemap,sitemaps,xml sitemap,configuration
 Requires at least: 5.5
 Tested up to: 5.6.1
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,9 +23,7 @@ WP Sitemaps Config let you easily
 * add the entries **Priority**, **Change Frequency** and **Last Modification Date** to each URL
 * exclude single posts and pages from the XML sitemaps
 
-This plugin is ready for multisites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
-
-Header image and icon of the WordPress plugin's page cutted out of a photo by [Bacila Vlad](https://unsplash.com/@bacila_vlad?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/human?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 
 == Installation ==
 
@@ -36,6 +34,11 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.0.1 =
+* Compatibility check with WordPress 5.6.1
+* New branding
+* Published on 2021-02-18
 
 = 2.0.0 =
 * Added functions to exclude single posts and pages from the sitemaps
