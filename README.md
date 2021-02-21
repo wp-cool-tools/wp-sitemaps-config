@@ -15,9 +15,7 @@ WP Sitemaps Config let you easily
 * add the entries **Priority**, **Change Frequency** and **Last Modification Date** to each URL
 * exclude single posts and pages from the XML sitemaps
 
-This plugin is ready for multisites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
-
-Header image and icon of the WordPress plugin's page cutted out of a photo by [Bacila Vlad](https://unsplash.com/@bacila_vlad?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/human?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 
 ## Installation
 

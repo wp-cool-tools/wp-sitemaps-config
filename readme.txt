@@ -1,5 +1,6 @@
 === WP Sitemaps Config ===
 Contributors: kybernetikservices, Hinjiriyo
+Donate link: https://www.paypal.com/donate?hosted_button_id=AL9M7YVLAEE7W
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration
 Requires at least: 5.5
 Tested up to: 5.6.1
