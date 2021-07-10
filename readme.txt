@@ -1,9 +1,9 @@
 === WP Sitemaps Config ===
 Contributors: kybernetikservices, Hinjiriyo
-Donate link: https://www.paypal.com/donate?hosted_button_id=AL9M7YVLAEE7W
+Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration
 Requires at least: 5.5
-Tested up to: 5.6.1
+Tested up to: 5.8
 Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -37,9 +37,10 @@ This section describes how to install the plugin and get it working.
 == Changelog ==
 
 = 2.0.1 =
-* Compatibility check with WordPress 5.6.1
+* Compatibility check with WordPress 5.8
+* Compatibility check with WordPress 5.7
+* Compatibility check with WordPress 5.6.2
 * New branding
-* Published on 2021-02-18
 
 = 2.0.0 =
 * Added functions to exclude single posts and pages from the sitemaps
