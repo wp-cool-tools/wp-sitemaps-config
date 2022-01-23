@@ -1,10 +1,10 @@
 === WP Sitemaps Config ===
 Contributors: kybernetikservices, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
-Tags: wordpress sitemap,sitemaps,xml sitemap,configuration
+Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
-Tested up to: 5.8
-Stable tag: 2.0.1
+Tested up to: 5.9
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ WP Sitemaps Config let you easily
 
 This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 
+= Demo =
+You want to test WP Sitemaps Config before installing on your site? Try it out on your free dummy site and [click here](https://demo.tastewp.com/wp-sitemaps-config).
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
@@ -35,6 +38,10 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.0.2 =
+* code improvement
+* Compatibility check with WordPress 5.9
 
 = 2.0.1 =
 * Compatibility check with WordPress 5.8
@@ -46,7 +53,7 @@ This section describes how to install the plugin and get it working.
 * Added functions to exclude single posts and pages from the sitemaps
 * Added sidebar on the settings pages of this plugin
 * Added header images and icon on the WordPress plugin's page
-* Added post meta data removal during uninstalling this plugin
+* Added post metadata removal during uninstalling this plugin
 * Published on 2020-10-24
 
 = 1.0.0 =

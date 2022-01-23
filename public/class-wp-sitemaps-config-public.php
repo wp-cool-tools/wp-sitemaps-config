@@ -170,7 +170,7 @@ class WP_Sitemaps_Config_Public {
 	 * @since    1.0.0
 	 * @param   object   $provider Instance of a WP_Sitemaps_Provider
 	 * @param   string   $name     Name of the sitemap provider.
-	 * @return  bool/object        Provider instance or false
+	 * @return  bool|object        Provider instance or false
 	 */
 	public function change_sitemaps_provider ( $provider, $name ) {
 		if ( isset( $this->stored_settings[ 'remove_provider_' . $name ] ) && '1' === $this->stored_settings[ 'remove_provider_' . $name ] ) {
@@ -264,18 +264,18 @@ class WP_Sitemaps_Config_Public {
 	 * Remove excluded posts from the sitemap
 	 *
 	 * @since    2.0.0
-	 * @param array  $urls      Array of URL (permalinks)
+	 * @param array  $loc
 	 * @param object $post      WP_Post object
 	 * @return array            Edited array of URL
 	 */
 	public function exclude_single_posts ( $loc, $post ) {
-		
+
 		// fast check: if no post is excluded, then return unchanged
 		if ( empty( $this->excluded_posts ) ) {
 			return $loc;
 		}
-		
-		// check if the post ID is in the array of excluded posts
+
+        // check if the post ID is in the array of excluded posts
 		if ( in_array( $post->ID, $this->excluded_posts ) ) {
 			// return no URL
 			return array( 'loc' => '' );
