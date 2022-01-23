@@ -83,7 +83,6 @@ class WP_Sitemaps_Config {
 		$this->plugin_version = WP_SITEMAPS_CONFIG_VERSION;
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -95,7 +94,6 @@ class WP_Sitemaps_Config {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - WP_Sitemaps_Config_Loader. Orchestrates the hooks of the plugin.
-	 * - WP_Sitemaps_Config_i18n. Defines internationalization functionality.
 	 * - WP_Sitemaps_Config_Admin. Defines all hooks for the admin area.
 	 * - WP_Sitemaps_Config_Public. Defines all hooks for the public side of the site.
 	 *
@@ -114,12 +112,6 @@ class WP_Sitemaps_Config {
 		require_once WP_SITEMAPS_CONFIG_ROOT . 'includes/class-wp-sitemaps-config-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once WP_SITEMAPS_CONFIG_ROOT . 'includes/class-wp-sitemaps-config-i18n.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once WP_SITEMAPS_CONFIG_ROOT . 'admin/class-wp-sitemaps-config-admin.php';
@@ -131,23 +123,6 @@ class WP_Sitemaps_Config {
 		require_once WP_SITEMAPS_CONFIG_ROOT . 'public/class-wp-sitemaps-config-public.php';
 
 		$this->loader = new WP_Sitemaps_Config_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the WP_Sitemaps_Config_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new WP_Sitemaps_Config_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 

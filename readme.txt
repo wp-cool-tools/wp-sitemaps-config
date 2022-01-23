@@ -41,6 +41,7 @@ This section describes how to install the plugin and get it working.
 
 = 2.0.2 =
 * code improvement
+* moved language files to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/wp-sitemaps-config/). So, please contribute as a translator to make WP Sitemaps Config available in more and more languages.
 * Compatibility check with WordPress 5.9
 
 = 2.0.1 =
