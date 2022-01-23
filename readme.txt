@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
 Tested up to: 5.9
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.0.3 =
+* removed empty lines from post sitemap (reported by @gregslegs).
+* changed filter to remove urls from post sitemap
 
 = 2.0.2 =
 * code improvement

@@ -220,7 +220,7 @@ class WP_Sitemaps_Config {
 		// add or remove sitemaps for certain taxonomies
 		$this->loader->add_filter( 'wp_sitemaps_taxonomies', $plugin_public, 'change_sitemaps_taxonomies' );
 		// remove excluded posts from the sitemap
-		$this->loader->add_filter( 'wp_sitemaps_posts_entry', $plugin_public, 'exclude_single_posts', 10, 2 );
+		$this->loader->add_filter( 'wp_sitemaps_posts_query_args', $plugin_public, 'exclude_single_posts', 10, 2 );
 		
 	}
 

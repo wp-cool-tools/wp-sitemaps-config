@@ -263,26 +263,26 @@ class WP_Sitemaps_Config_Public {
 	/**
 	 * Remove excluded posts from the sitemap
 	 *
-	 * @since    2.0.0
-	 * @param array  $loc
-	 * @param object $post      WP_Post object
-	 * @return array            Edited array of URL
+     * @param  array  $args
+     * @param  string $post_type The post type of the current sitemap
+	 * @since  2.0.0
+	 * @return array             Edited array arguments
 	 */
-	public function exclude_single_posts ( $loc, $post ) {
+	public function exclude_single_posts ( $args, $post_type ) {
 
-		// fast check: if no post is excluded, then return unchanged
-		if ( empty( $this->excluded_posts ) ) {
-			return $loc;
-		}
+        // bail if it is the wrong post type
+        if ( 'post' !== $post_type || empty( $this->excluded_posts ) ) {
+            return $args;
+        }
 
-        // check if the post ID is in the array of excluded posts
-		if ( in_array( $post->ID, $this->excluded_posts ) ) {
-			// return no URL
-			return array( 'loc' => '' );
-		} else {
-			// return unchanged
-			return $loc;
-		}
+        foreach ( $this->excluded_posts as $exclude_id ) {
+
+            $args['post__not_in'] = isset( $args['post__not_in'] ) ? $args['post__not_in'] : array();
+            $args['post__not_in'][] = $exclude_id; // $exclude_id is the ID of the post to exclude.
+
+        }
+
+        return $args;
 
 	}
 	
