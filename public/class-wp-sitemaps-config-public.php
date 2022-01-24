@@ -235,43 +235,24 @@ class WP_Sitemaps_Config_Public {
 		return $entry;
 	}
 	
-	/**
-	 * Change posts query arguments
-	 *
-	 * @since    x.x.x
-	 * @param array  $args      Array of WP_Query arguments.
-	 * @param string $post_type Post type name.
-	 * @return array            Edited array of WP_Query arguments.
-	 */
-	public function change_sitemaps_posts_query_args ( $args, $post_type ) {
-		/*// quit unchanged if the post is not of type 'post'?
-		if ( 'post' !== $post_type ) {
-			return $args;
-		}*/
-
-		// if 'post__not_in' parameter is available, then take it, else take an empty array
-		$args['post__not_in'] = isset( $args['post__not_in'] ) ? $args['post__not_in'] : array();
-		// append the post IDs which will be excluded
-		$args['post__not_in'][] = 123;
-		//  edit-post-post-visibility
-		// return the edited args
-		return $args;
-	}
-
 	/** === All functions for the tab 'Posts' === */
 
 	/**
-	 * Remove excluded posts from the sitemap
+	 * Remove excluded posts and pages from the sitemap
 	 *
      * @param  array  $args
      * @param  string $post_type The post type of the current sitemap
 	 * @since  2.0.0
+     * @updated 2.0.3
+     * @updated 2.0.4
 	 * @return array             Edited array arguments
 	 */
 	public function exclude_single_posts ( $args, $post_type ) {
 
+        $allowed_post_types = array( 'post', 'page' );
+
         // bail if it is the wrong post type
-        if ( 'post' !== $post_type || empty( $this->excluded_posts ) ) {
+        if ( !in_array( $args[ 'post_type' ], $allowed_post_types ) || empty( $this->excluded_posts ) ) {
             return $args;
         }
 

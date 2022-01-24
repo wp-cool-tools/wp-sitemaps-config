@@ -215,8 +215,6 @@ class WP_Sitemaps_Config {
 		$this->loader->add_filter( 'wp_sitemaps_post_types', $plugin_public, 'change_sitemaps_post_types' );
 		// add or remove tags to sitemap entries
 		$this->loader->add_filter( 'wp_sitemaps_posts_entry', $plugin_public, 'change_sitemaps_posts_entry', 10, 2 );
-		// change posts query arguments
-		// todo: $this->loader->add_filter( 'wp_sitemaps_posts_query_args', $plugin_public, 'change_sitemaps_posts_query_args', 10, 2 );
 		// add or remove sitemaps for certain taxonomies
 		$this->loader->add_filter( 'wp_sitemaps_taxonomies', $plugin_public, 'change_sitemaps_taxonomies' );
 		// remove excluded posts from the sitemap
