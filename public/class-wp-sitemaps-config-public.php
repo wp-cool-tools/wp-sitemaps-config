@@ -86,7 +86,8 @@ class WP_Sitemaps_Config_Public {
 		$this->stored_settings = $this->get_stored_settings();
 		// get IDs of excluded posts; empty array if no results
 		$this->excluded_posts = $this->get_excluded_post_ids();
-	}
+
+    }
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
@@ -187,12 +188,12 @@ class WP_Sitemaps_Config_Public {
 	 * @return  WP_Post_Type[]             Edited list of post types
 	 */
 	public function change_sitemaps_post_types ( $post_types ) {
-		foreach ( $post_types as $name => $data ) {
+        foreach ( $post_types as $name => $data ) {
 			if ( isset( $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) && '1' === $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) {
 				unset( $post_types[ $name ] );
 			}
 		}
-		return $post_types;
+        return $post_types;
 	}
 
 	/**
@@ -222,7 +223,7 @@ class WP_Sitemaps_Config_Public {
 	public function change_sitemaps_posts_entry ( $entry, $post ) {
 		if ( isset( $this->stored_settings[ 'add_lastmod' ] ) && '1' === $this->stored_settings[ 'add_lastmod' ] ) {
 			// date & time o the last modification of the post
-			$entry['lastmod'] = $post->post_modified_gmt;
+			$entry['lastmod'] = date( DATE_ISO8601, strtotime( $post->post_modified_gmt ) );
 		}
 		if ( isset( $this->stored_settings[ 'add_changefreq' ] ) && '1' === $this->stored_settings[ 'add_changefreq' ] ) {
 			// tag for archive
@@ -249,7 +250,7 @@ class WP_Sitemaps_Config_Public {
 	 */
 	public function exclude_single_posts ( $args, $post_type ) {
 
-        $allowed_post_types = array( 'post', 'page' );
+        $allowed_post_types = array( 'post', 'page', 'product' );
 
         // bail if it is the wrong post type
         if ( !in_array( $args[ 'post_type' ], $allowed_post_types ) || empty( $this->excluded_posts ) ) {

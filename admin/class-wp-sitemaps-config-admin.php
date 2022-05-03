@@ -697,7 +697,7 @@ class WP_Sitemaps_Config_Admin {
 	 */
 	public function add_posts_metabox( $post_type ) {
 		// Limit meta box to certain post types.
-		$post_types = array( 'post', 'page' );
+		$post_types = array( 'post', 'page', 'product' );
 
 		if ( in_array( $post_type, $post_types ) ) {
 			$text = 'XML Sitemap';
