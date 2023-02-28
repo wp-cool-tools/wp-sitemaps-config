@@ -1,10 +1,10 @@
 === WP Sitemaps Config ===
-Contributors: kybernetikservices
+Contributors: kybernetikservices, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
-Tested up to: 6.0
-Stable tag: 2.1.0
+Tested up to: 6.2
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,8 @@ This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To us
 = Demo =
 You want to test WP Sitemaps Config before installing on your site? Try it out on your free dummy site and [click here](https://demo.tastewp.com/wp-sitemaps-config).
 
+Read also more on [Best Sitemap Plugins for WordPress in 2023](https://ays-pro.com/blog/best-sitemap-plugins-for-wordpress-in-2023)
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
@@ -38,6 +40,10 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.1.1 =
+* fixed issue with time format - improved conversion to ISO 8601 (reported by @zodiac1978)
+* Compatibility check with WordPress 6.2 beta
 
 = 2.1.0 =
 * added support to exclude WooCommerce products

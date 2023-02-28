@@ -223,7 +223,7 @@ class WP_Sitemaps_Config_Public {
 	public function change_sitemaps_posts_entry ( $entry, $post ) {
 		if ( isset( $this->stored_settings[ 'add_lastmod' ] ) && '1' === $this->stored_settings[ 'add_lastmod' ] ) {
 			// date & time o the last modification of the post
-			$entry['lastmod'] = date( DATE_ISO8601, strtotime( $post->post_modified_gmt ) );
+			$entry['lastmod'] = date( DATE_ATOM, strtotime( $post->post_modified_gmt ) );
 		}
 		if ( isset( $this->stored_settings[ 'add_changefreq' ] ) && '1' === $this->stored_settings[ 'add_changefreq' ] ) {
 			// tag for archive
