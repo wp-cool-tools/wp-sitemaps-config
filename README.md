@@ -14,6 +14,7 @@ WP Sitemaps Config let you easily
 * remove the sitemaps for all public custom post types and custom taxonomies
 * add the entries **Priority**, **Change Frequency** and **Last Modification Date** to each URL
 * exclude single posts and pages from the XML sitemaps
+* set the priority and change frequency for each post and page manually
 
 This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 

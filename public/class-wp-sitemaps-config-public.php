@@ -86,7 +86,6 @@ class WP_Sitemaps_Config_Public {
 		$this->stored_settings = $this->get_stored_settings();
 		// get IDs of excluded posts; empty array if no results
 		$this->excluded_posts = $this->get_excluded_post_ids();
-
     }
 
 	/**
@@ -143,7 +142,8 @@ class WP_Sitemaps_Config_Public {
 	public function get_stored_settings() {
 		// try to load current settings. If they are not in the DB return default settings
 		$settings = get_option( WP_SITEMAPS_CONFIG_OPTION_NAME );
-		// if proper settings, then return them
+
+        // if proper settings, then return them
 		if ( is_array( $settings ) and ! empty( $settings ) ) {
 			return $settings;
 		}
@@ -188,7 +188,12 @@ class WP_Sitemaps_Config_Public {
 	 * @return  WP_Post_Type[]             Edited list of post types
 	 */
 	public function change_sitemaps_post_types ( $post_types ) {
-        foreach ( $post_types as $name => $data ) {
+        file_put_contents(
+              WP_CONTENT_DIR . '/debug.log',
+              "post_types = " . var_export( $post_types, true ) . "\n\n"
+            , FILE_APPEND
+        );
+       foreach ( $post_types as $name => $data ) {
 			if ( isset( $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) && '1' === $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) {
 				unset( $post_types[ $name ] );
 			}
@@ -212,27 +217,49 @@ class WP_Sitemaps_Config_Public {
 		return $taxonomies;
 	}
 
-	/**
-	 * Add or remove tags to sitemap providers
-	 *
-	 * @since    1.0.0
-	 * @param array   $sitemap_entry Sitemap entry for the post.
-	 * @param WP_Post $post          Post object.
-	 * @return array                 Edited sitemap entry for the post.
-	 */
+    /**
+     * Add or remove tags to sitemap providers
+     *
+     * @param $entry
+     * @param WP_Post $post Post object.
+     *
+     * @return array                 Edited sitemap entry for the post.
+     * @since    1.0.0
+     */
 	public function change_sitemaps_posts_entry ( $entry, $post ) {
+
+		// setting of the entry's visibility in the sitemap
 		if ( isset( $this->stored_settings[ 'add_lastmod' ] ) && '1' === $this->stored_settings[ 'add_lastmod' ] ) {
-			// date & time o the last modification of the post
+			// date & time of the last modification of the post
 			$entry['lastmod'] = date( DATE_ATOM, strtotime( $post->post_modified_gmt ) );
 		}
+
+        // setting of the change frequency of the post
 		if ( isset( $this->stored_settings[ 'add_changefreq' ] ) && '1' === $this->stored_settings[ 'add_changefreq' ] ) {
-			// tag for archive
-			$entry['changefreq'] = 'never';
+			// set default
+			$entry['changefreq'] = 'weekly';
+			// set stored value if avaiable and valid
+			$post_meta = get_post_meta( $post->ID, WP_SITEMAPS_CONFIG_META_KEY );
+			if ( isset( $post_meta[0]['changefreq'] ) && in_array( $post_meta[0]['changefreq'], array( 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never' ) ) ) {
+				$entry['changefreq'] = $post_meta[0]['changefreq'];
+			}
 		}
+
+		// setting of the priority of the post
 		if ( isset( $this->stored_settings[ 'add_priority' ] ) && '1' === $this->stored_settings[ 'add_priority' ] ) {
-			// default value: 0.5
+			// set default
 			$entry['priority'] = 0.5;
+			// set stored value if available and valid
+			$post_meta = get_post_meta( $post->ID, WP_SITEMAPS_CONFIG_META_KEY );
+			if ( isset( $post_meta[0]['priority'] ) ) {
+				$prio = (float) $post_meta[0]['priority'];
+				if ( 0 <= $prio && 1 >= $prio ) {
+					$entry['priority'] = $prio;
+				}
+			}
 		}
+
+        // return
 		return $entry;
 	}
 	

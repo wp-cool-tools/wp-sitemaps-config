@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
 Tested up to: 6.2
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ WP Sitemaps Config let you easily
 * remove the sitemaps for all public custom post types and custom taxonomies
 * add the entries **Priority**, **Change Frequency** and **Last Modification Date** to each URL
 * exclude single posts and pages from the XML sitemaps
+* set the priority and change frequency for each post and page manually
 
 This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 
@@ -40,6 +41,12 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.2.0 =
+* added option in the post metabox for the priority (thanks to @Hinjiriyo)
+* added option in the post metabox for the change frequency (thanks to @Hinjiriyo)
+* changed the default of the change frequency from 'never' to 'weekly' (inspired by @zodiac1978)
+* Compatibility check with WordPress 6.3
 
 = 2.1.1 =
 * fixed issue with time format - improved conversion to ISO 8601 (reported by @zodiac1978)

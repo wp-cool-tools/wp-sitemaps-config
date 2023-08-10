@@ -1,15 +1,4 @@
 <?php
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * @link       https://www.kybernetik-services.com/
- * @since      1.0.0
- *
- * @package    WP_Sitemaps_Config
- * @subpackage WP_Sitemaps_Config/admin
- */
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -20,6 +9,7 @@
  * @subpackage WP_Sitemaps_Config/admin
  * @author     Kybernetik Services <wordpress@kybernetik.com.de>
  */
+
 if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 class WP_Sitemaps_Config_Admin {
 
@@ -82,7 +72,7 @@ class WP_Sitemaps_Config_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      array
+	 * @var      array|null
 	 */
 	private $form_structure;
 
@@ -91,7 +81,7 @@ class WP_Sitemaps_Config_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      array
+	 * @var      array|null
 	 */
 	private $stored_settings;
 
@@ -105,10 +95,46 @@ class WP_Sitemaps_Config_Admin {
 	private $exclude_post_label;
 
 	/**
+	 * Options for the change frequency
+	 *
+	 * @since    2.2.0
+	 * @access   private
+	 * @var      array
+	 */
+	private $changefreq_options;
+
+	/**
+	 * Key names of the change frequency options
+	 *
+	 * @since    2.2.0
+	 * @access   private
+	 * @var      array
+	 */
+	private $changefreq_keys;
+
+	/**
+	 * Options of the priority
+	 *
+	 * @since    2.2.0
+	 * @access   private
+	 * @var      array
+	 */
+	private $priority_options;
+
+	/**
+	 * Key names of the priority options
+	 *
+	 * @since    2.2.0
+	 * @access   private
+	 * @var      array
+	 */
+	private $priority_keys;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      array     $args    Parameters of this plugin
+	 * @param    array     $args    Parameters of this plugin
 	 */
 	public function __construct( $args ) {
 
@@ -121,6 +147,33 @@ class WP_Sitemaps_Config_Admin {
 		$this->settings_fields_options = 'wp-sitemaps-config-options';
 		
 		$this->exclude_post_label = __( 'Exclude this post from the XML sitemap', 'wp-sitemaps-config' );
+		
+		$this->changefreq_options = array(
+			'always'	=>	__( 'always', 'wp-sitemaps-config' ),
+			'hourly'	=>	__( 'hourly', 'wp-sitemaps-config' ),
+			'daily'		=>	__( 'daily', 'wp-sitemaps-config' ),
+			'weekly' 	=>	__( 'weekly (Default)', 'wp-sitemaps-config' ),
+			'monthly' 	=>	__( 'monthly', 'wp-sitemaps-config' ),
+			'yearly' 	=>	__( 'yearly', 'wp-sitemaps-config' ),
+			'never' 	=>	__( 'never', 'wp-sitemaps-config' ),
+		);
+		$this->changefreq_keys = array_keys( $this->changefreq_options );
+
+		$this->priority_options = array(
+			'1.0' => __( '1.0', 'wp-sitemaps-config' ),
+			'0.9' => __( '0.9', 'wp-sitemaps-config' ),
+			'0.8' => __( '0.8', 'wp-sitemaps-config' ),
+			'0.7' => __( '0.7', 'wp-sitemaps-config' ),
+			'0.6' => __( '0.6', 'wp-sitemaps-config' ),
+			'0.5' => __( '0.5 (Default)', 'wp-sitemaps-config' ),
+			'0.4' => __( '0.4', 'wp-sitemaps-config' ),
+			'0.3' => __( '0.3', 'wp-sitemaps-config' ),
+			'0.2' => __( '0.2', 'wp-sitemaps-config' ),
+			'0.1' => __( '0.1', 'wp-sitemaps-config' ),
+			'0.0' => __( '0.0', 'wp-sitemaps-config' ),
+		);
+		$this->priority_keys = array_keys( $this->priority_options );
+
 
 	}
 
@@ -427,8 +480,8 @@ class WP_Sitemaps_Config_Admin {
 						'title'   => esc_html__( 'Additional tags to sitemap entries', 'wp-sitemaps-config' ),
 						'desc'    => esc_html__( 'Select the optional tags you want to add in the sitemap entries. These tags are not typically consumed by search engines. Further tags are not currently supported by WordPress for the sitemap index.', 'wp-sitemaps-config' ),
 						'values'  => array(
-							'add_priority'		=> esc_html__( 'Add priority (default: 0.5)', 'wp-sitemaps-config' ),
-							'add_changefreq'	=> esc_html__( 'Add change frequency (default: never)', 'wp-sitemaps-config' ),
+							'add_priority'		=> esc_html__( 'Add priority', 'wp-sitemaps-config' ),
+							'add_changefreq'	=> esc_html__( 'Add change frequency', 'wp-sitemaps-config' ),
 							'add_lastmod'		=> esc_html__( 'Add last modification date', 'wp-sitemaps-config' ),
 						),
 					),
@@ -733,20 +786,90 @@ class WP_Sitemaps_Config_Admin {
 				$settings = array(
 					'excluded' => '0',
 					'priority' => 0.5,
-					'change_frequency' => '',
+					'changefreq' => 'weekly',
 				);
 			}*/
 		}
  
         // Display the form, using the current value.
+		
+		// option for the entry's visibility in the sitemap
 		printf(
 			'<p><input type="checkbox" id="wpxmlsitemap_excluded" name="wpxmlsitemap_excluded" value="1"%s />
 			<label for="wpxmlsitemap_excluded">%s</label><br />
 			<em>%s</em></p>',
 			checked( isset( $settings[ 'excluded' ] ), true, false ),
-			esc_html( $this->exclude_post_label),
+			esc_html( $this->exclude_post_label ),
 			esc_html__( 'If activated the link to this post is not listed on the XML sitemap. This does not mean that this post is excluded from search engines crawlers.', 'wp-sitemaps-config' )
 		);
+		
+		$label_select = '&mdash; Select &mdash;';
+
+		// option for the change frequency of the post
+		if( ! isset( $settings[ 'changefreq' ] ) ) {
+			$settings[ 'changefreq' ] = '';
+		}
+		// build the HTML code
+		$html =	sprintf( '<div><label for="wpxmlsitemap_changefreq">%s</label></div><div><select id="wpxmlsitemap_changefreq" name="wpxmlsitemap_changefreq"><option value="">%s</option>',
+			esc_html__( 'Change frequency', 'wp-sitemaps-config' ),
+			esc_html__( $label_select )
+		);
+
+		foreach ( $this->changefreq_options as $value => $label ) {
+
+            if( !empty( $settings[ 'changefreq' ] )) {
+
+                $selected = selected( $value == $settings[ 'changefreq' ], true, false );
+
+            }
+            else {
+
+                $selected = selected( 'weekly' == $value, true, false );
+
+            }
+
+            $html .= sprintf(
+				'<option value="%s"%s>%s</option>',
+				$value,
+                $selected,
+				esc_html( $label )
+			);
+		}
+		$html .= '</select></div><p><em>' . sprintf( esc_html__( 'How frequently the page is likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. The value "always" should be used to describe documents that change each time they are accessed. The value "never" should be used to describe archived URLs. Please note that the value of this property is considered a hint and not a command. If nothing is set, the default value of "%s" is used.', 'wp-sitemaps-config' ), esc_html( $this->changefreq_options['weekly'] ) ) . '</em></p>';
+		echo $html;
+
+		// option for the priority of the post
+		if( ! isset( $settings[ 'priority' ] ) ) {
+			$settings[ 'priority' ] = '';
+		}
+		// build the HTML code
+		$html =	sprintf( '<div><label for="wpxmlsitemap_priority">%s</label></div><div><select id="wpxmlsitemap_priority" name="wpxmlsitemap_priority"><option value="">%s</option>',
+			esc_html__( 'Priority', 'wp-sitemaps-config' ),
+			esc_html__( $label_select )
+		);
+		foreach ( $this->priority_options as $value => $label ) {
+
+            if( isset( $settings[ 'priority' ] ) && !empty( $settings[ 'priority' ] ) ) {
+
+                $selected = selected( $value == $settings[ 'priority' ], true, false );
+
+            }
+            else {
+
+                $selected = selected( 0.5 == $value, true, false );
+
+            }
+
+			$html .= sprintf(
+				'<option value="%s"%s>%s</option>',
+				$value,
+				$selected,
+				esc_html( $label )
+			);
+		}
+		$html .= '</select></div><p><em>' . sprintf( esc_html__( 'The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. Search engines may use this information when selecting between URLs on the same site. If no value is specified, the default priority of %s is used.', 'wp-sitemaps-config' ), esc_html( $this->priority_options[ '0.5' ] ) ) . '</em></p>';
+		echo $html;
+
     }
 
 	/**
@@ -795,8 +918,45 @@ class WP_Sitemaps_Config_Admin {
  
         // Sanitize the user input.
         $settings = array();
+		
+		// setting for the entry's visibility in the sitemap
 		if ( isset( $_POST[ 'wpxmlsitemap_excluded' ] ) && '1' === $_POST[ 'wpxmlsitemap_excluded' ] ) {
 			$settings[ 'excluded' ] = '1';
+		}
+
+		// setting for the change frequency of the post
+		if ( isset( $_POST[ 'wpxmlsitemap_changefreq' ] ) && in_array( $_POST[ 'wpxmlsitemap_changefreq' ], $this->changefreq_keys ) ) {
+			$settings[ 'changefreq' ] = $_POST[ 'wpxmlsitemap_changefreq' ];
+		}
+ 
+		// setting for the priority of the post
+		if ( isset( $_POST[ 'wpxmlsitemap_priority' ] ) ) {
+			/*
+			if ( 
+				filter_var(
+					$_POST[ 'wpxmlsitemap_priority' ],
+					FILTER_VALIDATE_FLOAT,
+					[
+						'options' => [ // requires PHP 7.4.0 or above
+							'min_range' => 0,
+							'max_range' => 1
+						]
+					]
+				) !== false 
+			) {
+				$value = floatval( $_POST[ 'wpxmlsitemap_priority' ] );
+			}
+			or:
+			$value = filter_var(
+				$_POST[ 'wpxmlsitemap_priority' ],
+				FILTER_SANITIZE_NUMBER_FLOAT,
+				FILTER_FLAG_ALLOW_FRACTION
+			);
+			*/
+			$value = floatval( $_POST[ 'wpxmlsitemap_priority' ] );
+			if ( 0 <= $value && 1 >= $value ) {
+				$settings[ 'priority' ] = $value;
+			}
 		}
  
         // Update the meta field if there is data, else remove it
