@@ -188,16 +188,13 @@ class WP_Sitemaps_Config_Public {
 	 * @return  WP_Post_Type[]             Edited list of post types
 	 */
 	public function change_sitemaps_post_types ( $post_types ) {
-        file_put_contents(
-              WP_CONTENT_DIR . '/debug.log',
-              "post_types = " . var_export( $post_types, true ) . "\n\n"
-            , FILE_APPEND
-        );
+
        foreach ( $post_types as $name => $data ) {
 			if ( isset( $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) && '1' === $this->stored_settings[ 'remove_sitemap_posts_' . $name ] ) {
 				unset( $post_types[ $name ] );
 			}
 		}
+
         return $post_types;
 	}
 
