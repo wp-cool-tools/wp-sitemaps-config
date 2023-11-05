@@ -3,7 +3,7 @@ Contributors: kybernetikservices, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
-Tested up to: 6.3
+Tested up to: 6.4
 Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,7 @@ This section describes how to install the plugin and get it working.
 
 = 2.2.1 =
 * removed leftover debugging code
+* Compatibility check with WordPress 6.4
 
 = 2.2.0 =
 * added option in the post metabox for the priority (thanks to @Hinjiriyo)
