@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
 Tested up to: 6.6
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,9 +42,13 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 2.2.2 =
+* improved strings for text translation
+* Compatibility check with WordPress 6.6
+
 = 2.2.1 =
 * removed leftover debugging code
-* Compatibility check with WordPress 6.4-6.6
+* Compatibility check with WordPress 6.4-6.5
 
 = 2.2.0 =
 * added option in the post metabox for the priority (thanks to @Hinjiriyo)
@@ -90,6 +94,11 @@ This section describes how to install the plugin and get it working.
 * Initial release at 2020-09-01
 
 == Upgrade Notice ==
+= 2.2.0 =
+Added option in the post metabox for the priority and  change frequency. Changed the default of the change frequency from 'never' to 'weekly'.
+
+= 2.1.0 =
+added support to exclude WooCommerce products and fixed issue with time format - converted to ISO 8601
 
 = 2.0.0 =
 Added functions to exclude single posts and pages from the sitemaps

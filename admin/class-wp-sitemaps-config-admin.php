@@ -160,17 +160,17 @@ class WP_Sitemaps_Config_Admin {
 		$this->changefreq_keys = array_keys( $this->changefreq_options );
 
 		$this->priority_options = array(
-			'1.0' => __( '1.0', 'wp-sitemaps-config' ),
-			'0.9' => __( '0.9', 'wp-sitemaps-config' ),
-			'0.8' => __( '0.8', 'wp-sitemaps-config' ),
-			'0.7' => __( '0.7', 'wp-sitemaps-config' ),
-			'0.6' => __( '0.6', 'wp-sitemaps-config' ),
-			'0.5' => __( '0.5 (Default)', 'wp-sitemaps-config' ),
-			'0.4' => __( '0.4', 'wp-sitemaps-config' ),
-			'0.3' => __( '0.3', 'wp-sitemaps-config' ),
-			'0.2' => __( '0.2', 'wp-sitemaps-config' ),
-			'0.1' => __( '0.1', 'wp-sitemaps-config' ),
-			'0.0' => __( '0.0', 'wp-sitemaps-config' ),
+			'1.0' => '1.0',
+			'0.9' => '0.9',
+			'0.8' => '0.8',
+			'0.7' => '0.7',
+			'0.6' => '0.6',
+			'0.5' => '0.5' . ' ' . __( '(Default)', 'wp-sitemaps-config' ),
+			'0.4' => '0.4',
+			'0.3' => '0.3',
+			'0.2' => '0.2',
+			'0.1' => '0.1',
+			'0.0' => '0.0',
 		);
 		$this->priority_keys = array_keys( $this->priority_options );
 
