@@ -43,7 +43,8 @@ This section describes how to install the plugin and get it working.
 == Changelog ==
 
 = 2.2.3 =
-* Fixed deprecated notice with PHP 8
+* fixed deprecated notice with PHP 8
+* fixed '_load_textdomain_just_in_time was called incorrectly.' introduced in WordPress 6.7
 * Compatibility check with WordPress 6.7
 
 = 2.2.2 =

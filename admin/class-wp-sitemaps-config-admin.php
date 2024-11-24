@@ -135,10 +135,11 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 		/**
 		 * Initialize the class and set its properties.
 		 *
+		 * @param    array     $args Parameters of this plugin
+		 *
 		 * @since    1.0.0
-		 * @param    array     $args    Parameters of this plugin
 		 */
-		public function __construct( $args ) {
+		public function __construct( array $args ) {
 
 			$this->plugin_name		= $args['name'];
 			$this->plugin_slug		= $args['slug'];
@@ -175,7 +176,6 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 				'0.0' => '0.0',
 			);
 			$this->priority_keys = array_keys( $this->priority_options );
-
 
 		}
 

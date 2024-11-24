@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -93,4 +92,10 @@ function run_wp_sitemaps_config() {
 	$plugin->run();
 
 }
-run_wp_sitemaps_config();
+
+// run config directly only in frontend otherwise wait for init hook
+if( is_admin() ) {
+	add_action( 'init', 'run_wp_sitemaps_config' );
+} else {
+	run_wp_sitemaps_config();
+}
