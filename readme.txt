@@ -3,8 +3,8 @@ Contributors: kybernetikservices, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
-Tested up to: 6.6
-Stable tag: 2.2.2
+Tested up to: 6.7
+Stable tag: 2.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,9 +42,12 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 2.2.3 =
+* Fixed deprecated notice with PHP 8
+* Compatibility check with WordPress 6.7
+
 = 2.2.2 =
 * improved strings for text translation
-* Compatibility check with WordPress 6.6
 
 = 2.2.1 =
 * removed leftover debugging code
