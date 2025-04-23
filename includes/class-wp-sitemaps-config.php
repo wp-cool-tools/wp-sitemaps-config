@@ -144,7 +144,6 @@ if ( ! class_exists( 'WP_Sitemaps_Config' ) ) {
 
 			// load javascripts and stylesheets
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-			// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 			// Add the menu item to the options page in Settings.
 			$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu_item_to_options_page' );
@@ -213,7 +212,7 @@ if ( ! class_exists( 'WP_Sitemaps_Config' ) ) {
 		}
 
 		/**
-		 * Run the loader to execute all of the hooks with WordPress.
+		 * Run the loader to execute all the hooks with WordPress.
 		 *
 		 * @since    1.0.0
 		 * @access   public

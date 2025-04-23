@@ -12,7 +12,6 @@
 
 if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 
-	#[AllowDynamicProperties]
 	class WP_Sitemaps_Config_Admin {
 
 		/**
@@ -131,6 +130,10 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 		 * @var      array
 		 */
 		private $priority_keys;
+		/**
+		 * @var false|string
+		 */
+		private $plugin_screen_hook_suffix;
 
 		/**
 		 * Initialize the class and set its properties.
@@ -203,29 +206,6 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 			if ( 'settings_page_wp-sitemaps-config' === $screen->id ) {
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-sitemaps-config-admin.css', array(), $this->plugin_version, 'all' );
 			}
-
-		}
-
-		/**
-		 * Register the JavaScript for the admin area.
-		 *
-		 * @since    1.0.0
-		 */
-		public function enqueue_scripts() {
-
-			/**
-			 * This function is provided for demonstration purposes only.
-			 *
-			 * An instance of this class should be passed to the run() function
-			 * defined in WP_Sitemaps_Config_Loader as all of the hooks are defined
-			 * in that particular class.
-			 *
-			 * The WP_Sitemaps_Config_Loader will then create the relationship
-			 * between the defined hooks and the functions defined in this
-			 * class.
-			 */
-
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-sitemaps-config-admin.js', array( 'jquery' ), $this->plugin_version, false );
 
 		}
 
@@ -812,7 +792,7 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 				$settings[ 'changefreq' ] = '';
 			}
 			// build the HTML code
-			$html =	sprintf( '<div><label for="wpxmlsitemap_changefreq">%s</label></div><div><select id="wpxmlsitemap_changefreq" name="wpxmlsitemap_changefreq"><option value="">%s</option>',
+			$html =	sprintf( '<div style="padding-bottom: 5px;"><label for="wpxmlsitemap_changefreq">%s</label></div><div><select id="wpxmlsitemap_changefreq" name="wpxmlsitemap_changefreq"><option value="">%s</option>',
 			                    esc_html__( 'Change frequency', 'wp-sitemaps-config' ),
 			                    esc_html__( $label_select )
 			);
@@ -845,7 +825,7 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Admin' ) ) {
 				$settings[ 'priority' ] = '';
 			}
 			// build the HTML code
-			$html =	sprintf( '<div><label for="wpxmlsitemap_priority">%s</label></div><div><select id="wpxmlsitemap_priority" name="wpxmlsitemap_priority"><option value="">%s</option>',
+			$html =	sprintf( '<div style="padding-bottom: 5px;"><label for="wpxmlsitemap_priority">%s</label></div><div><select id="wpxmlsitemap_priority" name="wpxmlsitemap_priority"><option value="">%s</option>',
 			                    esc_html__( 'Priority', 'wp-sitemaps-config' ),
 			                    esc_html__( $label_select )
 			);
