@@ -83,7 +83,9 @@ if ( ! class_exists( 'WP_Sitemaps_Config' ) ) {
 			$this->plugin_version = WP_SITEMAPS_CONFIG_VERSION;
 
 			$this->load_dependencies();
-			$this->define_admin_hooks();
+			if( is_admin() ) {
+				$this->define_admin_hooks();
+			}
 			$this->define_public_hooks();
 
 		}

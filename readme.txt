@@ -42,8 +42,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 2.2.3 =
+= 2.2.4 =
 * code cleanup to make the plugin run faster than ever
+* fixed '_load_textdomain_just_in_time was called incorrectly on front page.' introduced in WordPress 6.7
 
 = 2.2.3 =
 * fixed deprecated notice with PHP 8
