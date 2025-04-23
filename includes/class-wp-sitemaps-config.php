@@ -195,18 +195,9 @@ if ( ! class_exists( 'WP_Sitemaps_Config' ) ) {
 		 */
 		private function define_public_hooks() {
 
-			$plugin_public = new WP_Sitemaps_Config_Public( array(
-				                                                'name' => $this->plugin_name,
-				                                                'slug' => $this->plugin_slug,
-				                                                'plugin_version' => $this->plugin_version,
-			                                                )
-			);
+			$plugin_public = new WP_Sitemaps_Config_Public();
 
-			// load javascripts and stylesheets
-			// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-			// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-			// add or remove sitemaps at all
+			// add or remove sitemaps completely
 			$this->loader->add_filter( 'wp_sitemaps_enabled', $plugin_public, 'is_sitemaps_enabled' );
 			// add or remove sitemap providers
 			$this->loader->add_filter( 'wp_sitemaps_add_provider', $plugin_public, 'change_sitemaps_provider', 10, 2 );

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
 Tested up to: 6.8
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ This section describes how to install the plugin and get it working.
 3. Go to 'Settings' > 'XML Sitemap'
 
 == Changelog ==
+
+= 2.2.3 =
+* code cleanup to make the plugin run faster than ever
 
 = 2.2.3 =
 * fixed deprecated notice with PHP 8
