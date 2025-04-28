@@ -90,17 +90,21 @@ if ( ! class_exists( 'WP_Sitemaps_Config_Public' ) ) {
 		/**
 		 * Add or remove sitemap providers
 		 *
-		 * @param   object $provider Instance of a WP_Sitemaps_Provider
-		 * @param string   $name     Name of the sitemap provider.
+		 * @param object $provider Instance of a WP_Sitemaps_Provider
+		 * @param string $name     Name of the sitemap provider.
 		 *
 		 * @return  bool|object        Provider instance or false
-		 *@since    1.0.0
+		 * @since    1.0.0
 		 */
-		public function change_sitemaps_provider( object $provider, string $name ) {
+		public function change_sitemaps_provider( $provider, string $name ) {
+			// ToDO: check why the provider instance can be a boolean which leads in a fatal error when $provider is defined as an object
+
 			if ( isset( $this->stored_settings[ 'remove_provider_' . $name ] ) && '1' === $this->stored_settings[ 'remove_provider_' . $name ] ) {
 				return false;
 			}
+
 			return $provider;
+
 		}
 
 		/**
