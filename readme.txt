@@ -1,9 +1,9 @@
 === WP Sitemaps Config ===
-Contributors: kybernetikservices, Hinjiriyo
+Contributors: kybernetikservices,wpcooltools, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
 Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
 Requires at least: 5.5
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 2.2.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
