@@ -29,7 +29,7 @@ WP Sitemaps Config let you easily
 This plugin is ready for multi sites. It requires WordPress 5.5 or higher. To use the XML sitemaps the PHP extension SimpleXML must run on your server.
 
 = Demo =
-You want to test WP Sitemaps Config before installing on your site? Try it out on your free dummy site and [click here](https://demo.tastewp.com/wp-sitemaps-config).
+You want to test WP Sitemaps Config before installing on your site? Try it out on your free WordPress playground and [click here](https://wordpress.org/plugins/wp-sitemaps-config/?preview=1).
 
 Read also more on [Best Sitemap Plugins for WordPress in 2023](https://ays-pro.com/blog/best-sitemap-plugins-for-wordpress-in-2023)
 
@@ -47,9 +47,9 @@ This section describes how to install the plugin and get it working.
 
 You can disable core XML sitemaps, remove selected sitemap providers, exclude individual posts and pages, and manage additional sitemap values.
 
-= Does the plugin work on multisite? =
+= Does the plugin work on Multisite? =
 
-Yes. The plugin is ready for multisite installations.
+Yes. The plugin is ready for Multisite installations.
 
 = Are there technical requirements? =
 
