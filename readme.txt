@@ -1,8 +1,9 @@
 === WP Sitemaps Config ===
 Contributors: kybernetikservices,wpcooltools, Hinjiriyo
 Donate link: https://www.paypal.com/donate?hosted_button_id=NSEQX73VHXKS8
-Tags: wordpress sitemap,sitemaps,xml sitemap,configuration,sitemap
+Tags: xml sitemap,sitemaps,configuration,seo,indexing
 Requires at least: 5.5
+Requires PHP: 5.6
 Tested up to: 7.0
 Stable tag: 2.2.4.1
 License: GPLv2 or later
@@ -39,6 +40,24 @@ This section describes how to install the plugin and get it working.
 1. Upload `wp-sitemaps-config.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to 'Settings' > 'XML Sitemap'
+
+== Frequently Asked Questions ==
+
+= What can I configure with this plugin? =
+
+You can disable core XML sitemaps, remove selected sitemap providers, exclude individual posts and pages, and manage additional sitemap values.
+
+= Does the plugin work on multisite? =
+
+Yes. The plugin is ready for multisite installations.
+
+= Are there technical requirements? =
+
+Yes. WordPress 5.5 or higher is required, and the PHP extension `SimpleXML` must be available.
+
+== Screenshots ==
+
+1. Settings screen for the core XML sitemap configuration
 
 == Changelog ==
 
